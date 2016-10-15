@@ -1,0 +1,1 @@
+# wp-rest-api-ionic2
