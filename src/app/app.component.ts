@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Events, Nav, Platform } from 'ionic-angular';
+import { Events, Nav } from 'ionic-angular';
 
 import { ReportPage } from '../pages/report/report';
 import { LoginPage } from '../pages/login/login';
@@ -15,15 +15,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   constructor(
     public events: Events,
-    public userData: UserProvider,
-    platform: Platform
+    public userData: UserProvider
   ) {
-    // Call any initial plugins when ready
-    platform.ready().then(() => {
-      // StatusBar.styleDefault();
-      // Splashscreen.hide();
-    });
-
     this.listenToLoginEvents();
     userData.checkedLoggedInStatus();
   }
@@ -32,5 +25,4 @@ export class MyApp {
     this.events.subscribe('user:login', () => this.rootPage = ReportPage);
     this.events.subscribe('user:logout', () => this.rootPage = LoginPage);
   }
-
 }

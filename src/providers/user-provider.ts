@@ -25,15 +25,12 @@ export class UserProvider {
             err => console.log(err)
             );
     }
-
-
     logout() {
         this.stor.remove(this.AUTHTOKEN);
         this.events.publish('user:logout');
     }
-
     checkedLoggedInStatus() {
-        return this.stor.get(this.AUTHTOKEN).then(output=>{
+        this.stor.get(this.AUTHTOKEN).then(output=>{
             if(output){
                 this.events.publish('user:login');
             }});
