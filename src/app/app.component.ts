@@ -24,12 +24,8 @@ export class MyApp {
       // Splashscreen.hide();
     });
 
-    // decide which menu items should be hidden by current login status stored in local storage
-    if (userData.isLoggedIn()) {
-      this.rootPage = ReportPage;
-    }
-
     this.listenToLoginEvents();
+    userData.checkedLoggedInStatus();
   }
 
   listenToLoginEvents() {

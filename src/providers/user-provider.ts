@@ -32,7 +32,10 @@ export class UserProvider {
         this.events.publish('user:logout');
     }
 
-    isLoggedIn() {
-        return this.stor.get(this.AUTHTOKEN);
+    checkedLoggedInStatus() {
+        return this.stor.get(this.AUTHTOKEN).then(output=>{
+            if(output){
+                this.events.publish('user:login');
+            }});
     }
 }
