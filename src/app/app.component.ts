@@ -6,17 +6,18 @@ import { ReportPage } from '../pages/report/report';
 import { LoginPage } from '../pages/login/login';
 import { UserProvider } from '../providers/user-provider';
 import { WordPressProvider } from '../providers/wordpress-provider';
+import { HttpClient } from '../providers/http-client-service';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`,
-  providers: [UserProvider, WordPressProvider]
+  providers: [UserProvider, WordPressProvider, HttpClient]
 })
 export class MyApp {
   rootPage: any = LoginPage;
   @ViewChild(Nav) nav: Nav;
   constructor(
-    public events: Events,
-    public userData: UserProvider
+    private events: Events,
+    private userData: UserProvider
   ) {
     this.listenToLoginEvents();
     userData.checkedLoggedInStatus();
