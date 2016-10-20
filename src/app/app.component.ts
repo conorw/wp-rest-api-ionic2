@@ -5,10 +5,11 @@ import { Events, Nav } from 'ionic-angular';
 import { ReportPage } from '../pages/report/report';
 import { LoginPage } from '../pages/login/login';
 import { UserProvider } from '../providers/user-provider';
+import { WordPressProvider } from '../providers/wordpress-provider';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`,
-  providers: [UserProvider]
+  providers: [UserProvider, WordPressProvider]
 })
 export class MyApp {
   rootPage: any = LoginPage;

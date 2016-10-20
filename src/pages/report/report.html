@@ -1,12 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Match Report
-    </ion-title>
-    <button primary (click)="logout()">Log Out</button>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>
+			Match Report
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  Match Report
+	<ion-list>
+		<ion-item>
+			<ion-label floating>Score</ion-label>
+			<ion-input [(ngModel)]="score" type="text"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating>Report</ion-label>
+			<ion-textarea [(ngModel)]="report" rows="6"></ion-textarea>
+		</ion-item>
+	</ion-list>
+
+	<div padding>
+		<button ion-button full (click)="createReport()">Create Report</button>
+	</div>
+
 </ion-content>
