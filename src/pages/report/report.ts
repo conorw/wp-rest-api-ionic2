@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import { WordPressProvider } from '../../providers/wordpress-provider';
-import { Events, LoadingController, Loading, ToastController } from 'ionic-angular';
+import { IonicPage, Events, LoadingController, Loading, ToastController } from 'ionic-angular';
+import { WordPressProvider } from '../../providers/word-press-provider';
+import { UserProvider } from '../../providers/user-provider';
+
+@IonicPage()
 @Component({
   selector: 'page-report',
-  templateUrl: 'report.html'
+  templateUrl: 'report.html',
 })
-export class ReportPage {
+export class Report {
+
   private score: string;
   private report: string;
   private loader: Loading;
 
-  constructor(private events: Events, private wordpress: WordPressProvider, private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+  constructor(private events: Events, private wordpress: WordPressProvider, private user: UserProvider, private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
     this.createLoader();
     this.listenToWordPressEvents();
   }
@@ -22,16 +26,16 @@ export class ReportPage {
   private listenToWordPressEvents() {
     this.events.subscribe('wordpress:savestatus', (state) => {
       console.log(state);
-      if (state[0].state === 'saving') {
+      if (state.state === 'saving') {
         this.loader.present();
         console.log('saving');
       }
-      else if (state[0].state === 'error') {
+      else if (state.state === 'error') {
         this.loader.dismiss();
         this.createLoader();
         this.toastCtrl.create({ message: 'Error Saving Report', duration: 3000 }).present();
       }
-      else if (state[0].state === 'finished') {
+      else if (state.state === 'finished') {
         this.loader.dismiss();
         this.createLoader();
         console.log('finished');
@@ -45,5 +49,8 @@ export class ReportPage {
   }
   createReport() {
     this.wordpress.createReport(this.score, this.report);
+  }
+  logout() {
+    this.user.logout();
   }
 }

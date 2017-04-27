@@ -1,19 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { Events, Nav } from 'ionic-angular';
 
-import { ReportPage } from '../pages/report/report';
-import { LoginPage } from '../pages/login/login';
+import { Login } from '../pages/login/login';
+import { Report } from '../pages/report/report';
+
 import { UserProvider } from '../providers/user-provider';
-import { WordPressProvider } from '../providers/wordpress-provider';
-import { HttpClient } from '../providers/http-client-service';
+import { WordPressProvider } from '../providers/word-press-provider';
+import { HttpClient } from '../providers/http-client';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`,
   providers: [UserProvider, WordPressProvider, HttpClient]
 })
 export class MyApp {
-  rootPage: any = LoginPage;
+  rootPage: any = Login;
   @ViewChild(Nav) nav: Nav;
   constructor(
     private events: Events,
@@ -24,7 +24,7 @@ export class MyApp {
   }
 
   listenToLoginEvents() {
-    this.events.subscribe('user:login', () => this.rootPage = ReportPage);
-    this.events.subscribe('user:logout', () => this.rootPage = LoginPage);
+    this.events.subscribe('user:login', () => this.rootPage = Report);
+    this.events.subscribe('user:logout', () => this.rootPage = Login);
   }
 }
