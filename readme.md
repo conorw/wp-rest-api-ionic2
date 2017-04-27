@@ -2,7 +2,7 @@
 
 ## The sample requires a Rest API enabled WP site to be created, running, and have the WP JWT plugin activated (https://en-gb.wordpress.org/plugins/jwt-authentication-for-wp-rest-api/).
 
-Make sure and set your auth key after activating the plugin, e.g.
+Make sure and set your auth key in the wp-config file after activating the plugin, e.g.
 ```
 define('JWT_AUTH_SECRET_KEY', 'your-top-secrect-key')
 ```
