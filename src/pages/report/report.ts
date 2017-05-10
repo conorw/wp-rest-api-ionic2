@@ -18,6 +18,10 @@ export class Report {
     this.createLoader();
     this.listenToWordPressEvents();
   }
+  createReport() {
+    // pass the texbox input to our WordPress service
+    this.wordpress.createReport(this.score, this.report);
+  }
   private createLoader() {
     this.loader = this.loadingCtrl.create({
       content: "Saving..."
@@ -46,9 +50,6 @@ export class Report {
       this.report = '';
       this.score = '';
     });
-  }
-  createReport() {
-    this.wordpress.createReport(this.score, this.report);
   }
   logout() {
     this.user.logout();

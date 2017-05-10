@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 export class HttpClient {
   constructor(private http: Http) {
   }
+  // property with headers that need injected
   headers: Headers;
 
   addHeader(headerName: string, headerValue: string) {
@@ -14,7 +15,7 @@ export class HttpClient {
     // (this.requestOptionArgs.headers as Headers).delete(headerName);
     (this.headers).set(headerName, headerValue);
   }
-
+  // inject the header to every get or post operation
   get(url) {
     return this.http.get(url, {
       headers: this.headers
