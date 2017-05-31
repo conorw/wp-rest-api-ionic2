@@ -1,11 +1,11 @@
 {
   "name": "wp-rest-api-ionic2",
   "app_id": "",
-  "v2": true,
-  "typescript": true,
-   "proxies": [
+  "proxies": [
     {
       "path": "/server",
       "proxyUrl": "https://vehicleclubs.com"
-   }]
+    }
+  ],
+  "type": "ionic-angular"
 }
