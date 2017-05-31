@@ -12,6 +12,14 @@ export class UserProvider {
   // for later use
   AUTHTOKEN: string = "myauthtokenkey";
 
+  checkedLoggedInStatus() {
+    this.stor.get(this.AUTHTOKEN).then(output => {
+      if (output) {
+        console.log(`User is logged in: ${output}`);
+        this.events.publish('user:login');
+      }
+    });
+  }
   // determine if the user/password can be authenticated and fire an event when finished
   login(username, password) {
     let data = { username: username, password: password };
@@ -22,7 +30,7 @@ export class UserProvider {
       .subscribe(response => {
         // great we are authenticated, save the token in localstorage for future use
         this.stor.set(this.AUTHTOKEN, response.token);
-        // and start using the token in every subsequent hhtp request to the WP server
+        // and start using the token in every subsequent http request to the WP server
         this.http.addHeader('Authorization', 'Bearer ' + response.token);
         // fire an event to say we are authenticated
         this.events.publish('user:login');
@@ -33,13 +41,5 @@ export class UserProvider {
   logout() {
     this.stor.remove(this.AUTHTOKEN);
     this.events.publish('user:logout');
-  }
-  checkedLoggedInStatus() {
-    this.stor.get(this.AUTHTOKEN).then(output => {
-      if (output) {
-        console.log(`User is logged in: ${output}`);
-        this.events.publish('user:login');
-      }
-    });
   }
 }
