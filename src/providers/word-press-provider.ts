@@ -5,7 +5,6 @@ import { HttpClient } from '../providers/http-client';
 @Injectable()
 export class WordPressProvider {
   constructor(private events: Events, private http: HttpClient) {
-
   }
   createReport(score: string, report: string) {
     // let the app know we have started a save operation

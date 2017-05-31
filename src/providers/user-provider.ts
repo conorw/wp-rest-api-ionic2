@@ -31,7 +31,7 @@ export class UserProvider {
         // great we are authenticated, save the token in localstorage for future use
         this.stor.set(this.AUTHTOKEN, response.token);
         // and start using the token in every subsequent http request to the WP server
-        this.http.addHeader('Authorization', 'Bearer ' + response.token);
+        this.http.addHeader('Authorization', `Bearer ${response.token}`);
         // fire an event to say we are authenticated
         this.events.publish('user:login');
       },
