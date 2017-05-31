@@ -6,6 +6,7 @@ import { UserProvider } from '../../providers/user-provider';
 @IonicPage()
 @Component({
   selector: 'page-report',
+  providers: [WordPressProvider],
   templateUrl: 'report.html',
 })
 export class Report {

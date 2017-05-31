@@ -3,11 +3,10 @@ import { Events, Nav } from 'ionic-angular';
 import { Login } from '../pages/login/login';
 import { Report } from '../pages/report/report';
 import { UserProvider } from '../providers/user-provider';
-import { WordPressProvider } from '../providers/word-press-provider';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`,
-  providers: [UserProvider, WordPressProvider]
+  providers: [UserProvider]
 })
 export class MyApp {
   // the default root page is Login
