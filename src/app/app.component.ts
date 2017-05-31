@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Events, Nav } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Events } from 'ionic-angular';
 import { Login } from '../pages/login/login';
 import { Report } from '../pages/report/report';
 import { UserProvider } from '../providers/user-provider';
@@ -11,7 +11,6 @@ import { UserProvider } from '../providers/user-provider';
 export class MyApp {
   // the default root page is Login
   rootPage: any = Login;
-  @ViewChild(Nav) nav: Nav;
   constructor(
     private events: Events,
     private userData: UserProvider
